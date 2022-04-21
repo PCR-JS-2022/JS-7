@@ -22,7 +22,6 @@ body > header {
 
 h1 {
   margin: 0;
-  text-transform: capitalize;
 }
 
 main {
@@ -46,7 +45,7 @@ img {
 
 figure img {
   width: 100%;
-  height: calc(100% - 160px);
+  height: 240px;
   position: absolute;
   top: 59px;
 }
@@ -79,11 +78,14 @@ figure time {
   background-color: #fff;
 }
 
-address {
-  margin-bottom: 240px;
+.post-id {
+  margin: 0 0 240px;
   grid-area: address;
   background-color: #fff;
   padding-bottom: 18px;
+  font-size: 1em;
+  font-weight: 400;
+  font-style: italic;
 }
 
 figure p {
@@ -213,10 +215,16 @@ li img {
   border-radius: 50%;
   grid-area: img;
   margin: 0 0 12px 13px;
+  width: 43px;
+  height: 43px;
 }
 
 li header {
   grid-area: header;
+}
+
+.comment-name {
+  margin-right: 15px;
 }
 
 li p {
@@ -229,8 +237,23 @@ li ul {
   padding-left: 60px;
 }
 
-li li:nth-child(odd) {
+li li:nth-child(even) {
   background-color: rgba(196, 196, 196, 0.2);
+}
+
+.comment-with-children {
+  background-color: rgba(196, 196, 196, 0.2);
+  cursor: pointer;
+}
+
+.comment-with-children .sub-comments {
+  display: none;
+  background-color: #fffcfc;
+  cursor: default;
+}
+
+.comment-with-children.active .sub-comments {
+  display: block;
 }
 
 footer {
@@ -279,7 +302,7 @@ footer {
     position: static;
   }
 
-  address {
+  .post-id {
     margin-bottom: 37px;
   }
 
