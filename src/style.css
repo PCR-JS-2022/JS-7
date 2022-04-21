@@ -1,0 +1,293 @@
+body {
+  background-color: #fffcfc;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+body > header,
+footer {
+  background-color: #08b;
+  color: #fff;
+  padding: 40px;
+  text-align: center;
+}
+
+body > header {
+  border-bottom: 1px solid #c4c4c4;
+}
+
+h1 {
+  margin: 0;
+  text-transform: capitalize;
+}
+
+main {
+  position: relative;
+  padding: 40px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 82px;
+  min-height: calc(100vh - 217px);
+  box-sizing: border-box;
+}
+
+figure {
+  margin: 0;
+  position: relative;
+}
+
+img {
+  object-fit: cover;
+}
+
+figure img {
+  width: 100%;
+  height: calc(100% - 160px);
+  position: absolute;
+  top: 59px;
+}
+
+figcaption {
+  display: grid;
+  grid-template-areas: 'time' 'address' 'tags' 'description';
+  position: relative;
+}
+
+figure aside {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 24px;
+  grid-area: tags;
+  background-color: #fff;
+  padding: 31px 0 16px;
+}
+
+aside span {
+  background-color: #cacaca;
+  padding: 0 20px;
+}
+
+figure time {
+  font-weight: 700;
+  padding-bottom: 5px;
+  display: block;
+  grid-area: time;
+  background-color: #fff;
+}
+
+address {
+  margin-bottom: 240px;
+  grid-area: address;
+  background-color: #fff;
+  padding-bottom: 18px;
+}
+
+figure p {
+  grid-area: description;
+  background-color: #fff;
+  margin: 0;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-right: 34px;
+}
+
+button:hover {
+  filter: invert(47%) sepia(76%) saturate(6465%) hue-rotate(176deg) brightness(96%) contrast(103%);
+}
+
+button:last-child {
+  float: right;
+  margin: 0 0 0 34px;
+}
+
+button i,
+span i {
+  font-style: normal;
+  margin-right: 10px;
+}
+
+.modal-wrapper {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgba(196, 196, 196, 0.7);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 35px 48px;
+  width: 1000px;
+  max-width: calc(100vw - 60px);
+  max-height: calc(100vh - 72px);
+  min-height: 300px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.modal-close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  line-height: 28px;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+.modal-likes {
+  padding: 56px 30px 61px;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.modal-like {
+  padding: 30px 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  height: 239px;
+}
+
+.modal-like-avatar {
+  border-radius: 50%;
+}
+
+.modal-like-name {
+  text-align: center;
+}
+
+section > ul {
+  margin-top: 25px;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  padding: 9px 0 0;
+  display: grid;
+  grid-template-areas:
+    'img header'
+    'img text'
+    'subcomment subcomment';
+    grid-template-columns: 67px 1fr;
+}
+
+li:not(:first-child),
+ul {
+  border-top: 1px solid #e2e2e2;
+}
+
+li img {
+  border-radius: 50%;
+  grid-area: img;
+  margin: 0 0 12px 13px;
+}
+
+li header {
+  grid-area: header;
+}
+
+li p {
+  margin: 0 13px 12px 0;
+  grid-area: text;
+}
+
+li ul {
+  grid-area: subcomment;
+  padding-left: 60px;
+}
+
+li li:nth-child(odd) {
+  background-color: rgba(196, 196, 196, 0.2);
+}
+
+footer {
+  border-top: 1px solid #c4c4c4;
+}
+
+@media (min-width: 576px) {
+  main {
+    padding-left: 67px;
+    padding-right: 67px;
+  }
+
+  .modal-like {
+    width: 33.3%;
+    float: left;
+  }
+
+  li ul {
+    padding-left: 172px;
+  }
+}
+
+@media (min-width: 768px) {
+  .modal-like {
+    width: 20%;
+  }
+}
+
+@media (min-width: 992px) {
+  main {
+    padding-left: 465px;
+  }
+
+  figure {
+    position: static;
+  }
+
+  figure img {
+    left: 67px;
+    width: 320px;
+    height: 240px;
+    top: 40px;
+  }
+
+  figcaption {
+    position: static;
+  }
+
+  address {
+    margin-bottom: 37px;
+  }
+
+  figure aside {
+    position: absolute;
+    left: 67px;
+    top: 302px;
+    width: 320px;
+    padding: 0;
+  }
+}
