@@ -4,10 +4,50 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./media.css">
     <script src="./index.js"></script>
-    <title>Document</title>
+    <title>Пост</title>
   </head>
   <body>
-    <img src="" alt="" />
+    <header>
+      <h1 class="title">Фотографии</h1>
+    </header>
+
+    <main>
+      <section class="photoAndTags">
+        <img class="photo" src="/public/img/cat.jpg" alt="cat">
+        <ul class="tags">
+        </ul>
+      </section>
+
+      <div>
+        <section class="info">
+          <div class="date">Дата: 12.06.2006</div>
+          <div class="location">Локация: дом</div>
+          <div class="descr">Описание: Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus porro, nisi repellendus, voluptate mollitia commodi, incidunt debitis dolorum quaerat doloremque ipsam culpa. Reprehenderit dolorem aperiam consectetur quibusdam excepturi deserunt! Ipsum.</div>
+        </section>
+
+        <section class="feedback">
+          <div class="feedback_count">
+            <div>
+              <button class="like_btn"><img class ="like_img" src="/public/img/likes.png" alt="like"></button>
+              <span class="likes">25</span>
+            </div>
+            <div>
+              <button><img class="comment_img" src="/public/img/comments.png" alt="comment"></button>
+              <span class="countComments">5</span>
+            </div>
+          </div>
+          <button class="feedback_btn">Добавить комментарий</button>
+        </section>
+
+        <section class="comments">
+          <ul class="comm">
+          </ul>
+        </section>
+      </div>
+    </main>
+    <script src="script.js"></script>
   </body>
 </html>

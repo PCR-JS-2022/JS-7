@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+:root {
+    --main-color: #4682B4;
+}
+
+header {
+    background-color: var(--main-color);
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+main {
+    display: flex;
+    padding: 45px;
+}
+
+.photoAndTags {
+    width: 340px;
+}
+
+.photoAndTags .photo {
+    width: 320px;
+    height: 240px;
+    object-fit: cover;
+}
+
+.photoAndTags .tags {
+    list-style-type: none;
+    margin: 10px 0 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.photoAndTags .tags li {
+    background-color: var(--main-color);
+    margin: 0 10px 10px 0;
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+main > div {
+    width: 100%;
+    margin-left: 15px;
+}
+
+.info {
+    font-size: 16px;
+}
+
+.feedback {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.feedback .feedback_count {
+    display: flex;
+    align-items: center;
+    color: grey;
+}
+
+.feedback .feedback_count > div{
+    margin-right: 10px;
+}
+
+.feedback .feedback_count > div > button {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.feedback .feedback_count > div > button > img {
+    width: 16px;
+    height: 16px;
+}
+
+.feedback .feedback_btn {
+    background-color: var(--main-color);
+    padding: 7px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.comments {
+    margin: 15px 0;
+    padding: 10px;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+}
+
+.comments ul {
+    list-style-type: none;
+}
+
+.comments > ul li > div{
+    display: flex;
+    align-items: center;
+    min-height: 100px;
+}
+
+.comments > ul li img{
+    width: 29px;
+    height: 29px;
+    margin-right: 20px;
+}
+
+.comments > ul li > ul > li:nth-child(odd){
+    padding: 10px;
+    background-color: #c3d9eb;
+}
+
+footer {
+    height: 80px;
+    background-color: var(--main-color);
+}
+
+

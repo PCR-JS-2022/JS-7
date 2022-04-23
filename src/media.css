@@ -1,0 +1,41 @@
+@media (max-width: 768px) {
+    main {
+        display: block;
+        padding: 25px;
+    }
+    .photoAndTags {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .photoAndTags .photo {
+        width: 100%;
+        height: auto;
+        margin-top: 15px;
+    }
+
+    .info {
+        font-size: 16px;
+        margin-top: 15px;
+    }
+    
+    .comments ul {
+        padding: 0;
+    }
+}
+
+@media (max-width: 575px) {
+    header {
+        min-height: 70px;
+    }
+    header > h1 {
+        font-size: 25px;
+    }
+    .comments > ul li > div{
+        min-height: 80px;
+    }
+    footer {
+        height: 70px;
+    }
+}
