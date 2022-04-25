@@ -71,7 +71,7 @@ header {
 }
 
 .photo-layout .content-block .activity-block .like p {
-    background-image: url("../img/icons/love.svg");
+    background-image: url("../public/img/icons/love.svg");
     background-repeat: no-repeat;
     background-position-y: center;
     margin-right: 30px;
@@ -79,7 +79,7 @@ header {
 }
 
 .photo-layout .content-block .activity-block .comment p {
-    background-image: url("../img/icons/comment.svg");
+    background-image: url("../public/img/icons/comment.svg");
     background-position-y: center;
     background-repeat: no-repeat;
     padding-left: 30px;
