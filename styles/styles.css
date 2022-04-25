@@ -1,0 +1,161 @@
+:root {
+    --border-grey: 1px solid #c4c4c4;
+    --grey-color: #c4c4c4;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", "san-serif";
+}
+
+header {
+    min-height: 50px;
+    border-bottom: var(--border-grey);
+}
+
+.photo-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 20px 80px 0px 0px;
+}
+
+.photo-layout .photo-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 320px;
+    margin: 0 auto;
+}
+
+.photo-layout .photo-block .photo {
+    margin-bottom: 10px;
+}
+
+.photo-layout .photo-block .photo img {
+    width: 320px;
+    height: 240px;
+}
+
+.photo-layout .photo-block .tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.photo-layout .photo-block .tags .tag {
+    padding: 15px;
+    margin: 0px 10px 10px 0px;
+    background-color: var(--grey-color);
+}
+
+.photo-layout .content-block .title {
+    margin-bottom: 20px;
+}
+
+.photo-layout .content-block .description p {
+    margin-bottom: 10px;
+}
+
+.photo-layout .content-block .activity-block {
+    margin-top: 80px;
+    display: flex;
+    padding-bottom: 20px;
+}
+
+.photo-layout .content-block .activity-block .like p {
+    background-image: url("../img/icons/love.svg");
+    background-repeat: no-repeat;
+    background-position-y: center;
+    margin-right: 30px;
+    padding-left: 30px;
+}
+
+.photo-layout .content-block .activity-block .comment p {
+    background-image: url("../img/icons/comment.svg");
+    background-position-y: center;
+    background-repeat: no-repeat;
+    padding-left: 30px;
+}
+
+.photo-layout .content-block .activity-block .add-comment {
+    margin-left: auto;
+}
+
+.photo-layout .content-block .comments {
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-layout .content-block .comments .comment,
+.photo-layout .content-block .comments .comment-answer {
+    display: flex;
+    padding: 20px 20px 10px 20px;
+    align-items: center;
+    border-top: var(--border-grey);
+    border-bottom: var(--border-grey);
+}
+
+.photo-layout .content-block .comments .comment .avatar,
+.photo-layout .content-block .comments .comment-answer .avatar {
+    margin-right: 10px;
+}
+
+.photo-layout .content-block .comments .comment-answer {
+    max-width: 80%;
+    margin-left: auto;
+    border-top: none;
+}
+
+.photo-layout .content-block .comments .comment-answer:nth-child(2n) {
+    background-color: #c4c4c433;
+}
+
+footer {
+    margin-top: 30px;
+    min-height: 50px;
+    border-top: var(--border-grey);
+}
+
+@media screen and (max-width: 1024px) {
+    .photo-layout {
+        display: block;
+        padding: 20px 40px 0px 40px;
+    }
+
+    .photo-layout .photo-block {
+        flex-direction: column-reverse;
+        width: 100%;
+    }
+
+    .photo-layout .photo-block .photo img {
+        max-width: 450px;
+        height: 186px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .photo-layout {
+        display: block;
+        padding: 20px 10px 0px 10px;
+    }
+
+    .photo-layout .photo-block .tags {
+        justify-content: space-between;
+    }
+
+    .photo-layout .photo-block .tags .tag {
+        padding: 10px;
+    }
+
+    .photo-layout .content-block .activity-block .like p {
+        margin-right: 10px;
+    }
+}
