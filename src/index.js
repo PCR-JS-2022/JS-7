@@ -51,20 +51,3 @@ function createTags() {
     });
 
 }
-
-const title = document.getElementsByTagName('title')[0];
-title.innerText = post.title;
-const photo = document.getElementsByClassName('photo')[0];
-photo.children[0].src = post.pathToPostImg;
-const h1 = document.getElementsByClassName('title')[0];
-h1.innerText = post.title;
-const description = document.createElement('p');
-description.innerText = post.description;
-document.getElementsByClassName('description')[0].append(description);
-const likes = document.createElement('p');
-likes.innerText = post.likes;
-const comments = document.createElement('p');
-comments.innerText = String(post.comments.length);
-document.getElementsByClassName('like')[0].append(likes);
-document.getElementsByClassName('comment')[0].append(comments);
-createTags();
