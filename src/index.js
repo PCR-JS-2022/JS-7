@@ -139,6 +139,10 @@ const createComment = (comment) => {
 	return commentLi
 }
 
+function addHandleClick(parentComment, childrenComments) {
+	parentComment.addEventListener('click', () => childrenComments.classList.toggle('hidden'))
+}
+
 const appendComments = (commentsBlock, comments) => {
 	comments.forEach(comment => {
 		const commentLi = createComment(comment)
@@ -164,10 +168,6 @@ const deleteLastPortion = (commentsBlock, portionSize) => {
 		const lastChild = commentsBlock.lastChild
 		commentsBlock.removeChild(lastChild)
 	}
-}
-
-function addHandleClick(parentComment, childrenComments) {
-	parentComment.addEventListener('click', () => childrenComments.classList.toggle('hidden'))
 }
 
 const comments = q('.comments')
@@ -201,7 +201,7 @@ function updateComments() {
 	}
 
 	if (isFirstCommentBottomVisible && scrolled < initScrollPosition) {
-		if (childrenCount >= 50) {
+		if (topLine > 0) {
 			bottomLine -= portionSize
 			deleteLastPortion(comments, portionSize)
 			topLine -= portionSize
