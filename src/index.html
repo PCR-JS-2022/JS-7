@@ -1,13 +1,58 @@
 <!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./index.js"></script>
-    <title>Document</title>
-  </head>
-  <body>
-    <img src="" alt="" />
-  </body>
-</html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link media="(max-width: 768px)" rel="stylesheet" href="mobile_style.css">
+  <title>Keshagram</title>
+</head>
+
+<body>
+<div class="wrapper">
+  <header class="header">
+    <h1 class="title">Keshagram v7.0</h1>
+  </header>
+  <main class="content">
+    <div class="info__main mobile__info__main">
+      <span class="photo__title"></span>
+      <time class="date">12.03.2022</time>
+    </div>
+    <section class="photo">
+      <div class="photo__block">
+        <img class="photo__image" src="" alt="photo">
+      </div>
+      <div class="tags"></div>
+    </section>
+    <section>
+      <article class="info">
+        <div class="info__main">
+          <span class="photo__title"></span>
+          <time class="date"></time>
+        </div>
+        <p class="description"></p>
+      </article>
+      <div class="buttons">
+        <div class="button like">
+          <button class="like__button"></button>
+          <span class="like__count"></span>
+        </div>
+        <div class="button button__comment">
+          <img class="comment__image" src=""
+               alt="comments">
+          <span class="comment__count"></span>
+        </div>
+        <button class="add_comment">Добавить комментарий</button>
+      </div>
+      <ul class="comments"></ul>
+    </section>
+  </main>
+  <footer class="footer">
+    <p>Designed by <span>MetaKesha</span></p>
+  </footer>
+</div>
+<script src="index.js"></script>
+</body>
+
