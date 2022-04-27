@@ -94,8 +94,7 @@ header {
     flex-direction: column;
 }
 
-.photo-layout .content-block .comments .comment,
-.photo-layout .content-block .comments .comment-answer {
+.photo-layout .content-block .comments .comment {
     display: flex;
     padding: 20px 20px 10px 20px;
     align-items: center;
@@ -103,12 +102,11 @@ header {
     border-bottom: var(--border-grey);
 }
 
-.photo-layout .content-block .comments .comment .avatar,
-.photo-layout .content-block .comments .comment-answer .avatar {
+.photo-layout .content-block .comments .comment .avatar {
     margin-right: 10px;
 }
 
-.photo-layout .content-block .comments .comment-answer {
+.photo-layout .content-block .comment-answer {
     max-width: 80%;
     margin-left: auto;
     border-top: none;

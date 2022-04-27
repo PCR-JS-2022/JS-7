@@ -36,18 +36,3 @@ const post = {
         return comment;
     }),
 };
-
-/**
- * Create tags block
- * Создаёт блок тегов
- */
-function createTags() {
-    const tagsLayout = document.getElementsByClassName('tags')[0];
-    post.tags.forEach((tagData) => {
-        const tagNode = document.createElement('p');
-        tagNode.classList.add('tag');
-        tagNode.innerText = tagData;
-        tagsLayout.append(tagNode);
-    });
-
-}
