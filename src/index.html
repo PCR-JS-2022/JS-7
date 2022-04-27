@@ -1,13 +1,50 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./index.js"></script>
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
     <title>Document</title>
-  </head>
-  <body>
-    <img src="" alt="" />
-  </body>
+</head>
+<body>
+<header>
+    <h1 class="title">Фотографии</h1>
+</header>
+<main>
+    <section>
+        <article class="photo-block">
+            <div class="picture-wrapper">
+                <img class="picture" id="picture-id" src=''
+                     alt="">
+            </div>
+            <div class="info">
+                <p class="date"></p>
+                <p>Локация съемки: парк</p>
+                <p class="description"></p>
+            </div>
+            <span class="tags-block">
+            </span>
+            <div class="interface-block">
+                <div class="like-comment-icons">
+                    <button class="like-icon off"></button>
+                    <span class="like-count"></span>
+                    <button class="comment-icon"></button>
+                    <span class="comment-count"></span>
+                </div>
+                <button class="add-comment">Добавить комментарий</button>
+            </div>
+            <section class="comments-block">
+            </section>
+        </article>
+    </section>
+</main>
+<footer>
+    <p>Ⓒ Все права котиков защищены (＠＾◡＾)</p>
+</footer>
+<script src="./index.js"></script>
+</body>
 </html>
