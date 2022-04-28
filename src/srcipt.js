@@ -9,6 +9,7 @@ const countComments = document.querySelector('.count-com');
 const listComments = document.querySelector('.list-comment');
 let counCom = 0;
 let curIndex = 0;
+const changeCom = 5;
 
 
 function formatDate(date) {
@@ -25,8 +26,8 @@ function formatDate(date) {
 
 function addComment(start) {
     let count = 0;
-    for (let i = start; i < start + 5; i++) {
-        if (count >= 5) {
+    for (let i = start; i < start + changeCom; i++) {
+        if (count >= changeCom) {
             continue;
         }
         if (i > post.comments.length - 1) {
@@ -34,7 +35,6 @@ function addComment(start) {
         }
         let curCom = post.comments[i];
         let li = document.createElement('li');
-        li.classList.add('commentLi');
         if (curCom.hasOwnProperty('children')) {
             li.innerHTML += `<div class="comment" style="background-color:ivory;">` + `<img class="comment_img" src="${curCom.pathToUserImg}">`
                 + '<div class="comment_text">' + `<p>${curCom.userName}</p> <p>${formatDate(curCom.date)}</p> <p>${curCom.description}</p>`
@@ -47,7 +47,7 @@ function addComment(start) {
             let coundChild = 0;
             for (let j = 0; j < curCom.children.length; j++) {
                 let curChild = curCom.children[j];
-                ul.innerHTML += `<li class="commentLi"> <div class="comment">`
+                ul.innerHTML += `<li> <div class="comment">`
                     + `<img class="comment_img" src="${curChild.pathToUserImg}">`
                     + '<div class="comment_text">' + `<p>${curChild.userName}</p> <p>${formatDate(curChild.date)}</p> <p>${curChild.description}</p>`
                     + `</div> </div> </li> </ul>`;
@@ -104,27 +104,27 @@ likesIcon.addEventListener('click', () => {
     }
 });
 
-let prevPosition = window.scrollY;
+let observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            if (counCom > 50) {
+                while (counCom > 50) {
+                    window.scrollBy(0, -105);
+                    listComments.firstChild.remove();
+                    counCom--;
+                    countComments.innerHTML = counCom;
+                }
+            }
+            addComment(curIndex);
+            observer.observe(listComments.lastChild);
+            observerUp.observe(listComments.lastChild);
+            observer.unobserve(e.target);
+            prevPosition = window.scrollY;
+        }
+    })
+}, { threshold: 1 });
 
-window.addEventListener('scroll', () => {
+observer.observe(listComments.lastChild);
 
-    let windowRelative = document.documentElement.getBoundingClientRect();
-    let scroll = window.scrollY;
-
-    if (windowRelative.bottom < document.documentElement.clientHeight + 100) {
-        //Удаление первых комментариев при прокрутке вниз
-        /*while (counCom > 50) {
-            window.scrollBy(0, -105);
-            listComments.firstChild.remove();
-            counCom--;
-            countComments.innerHTML = counCom;
-        }*/
-        addComment(curIndex);
-    }
-    if (scroll < prevPosition) {
-        console.log("up");
-    }
-    prevPosition = scroll;
-});
 
 
