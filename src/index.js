@@ -191,16 +191,18 @@ window.onload = () => {
 
 	const bottomCallback = function (entries, observer) {
 		const scrolled = window.scrollY
+		const commentsCount = comments.children.length
 		if (entries[0].isIntersecting && scrolled > initScrollPosition) {
-			if (topLine > 0) {
+			if (commentsCount >= 50) {
 				deleteFirstPortion(comments, portionSize)
 				topLine += portionSize
 				const firstComment = comments.firstChild
 				const topObserver = new IntersectionObserver(topCallback, options)
 				topObserver.observe(firstComment)
 			}
-			appendComments(comments, [...post.comments].splice(bottomLine, portionSize))
-			bottomLine += portionSize
+			const portion = [...post.comments].splice(bottomLine, portionSize)
+			appendComments(comments, portion)
+			bottomLine += portion.length
 			observer.unobserve(entries[0].target)
 			const newLastComment = comments.lastChild
 			observer.observe(newLastComment)
@@ -214,9 +216,8 @@ window.onload = () => {
 
 	function topCallback(entries, observer) {
 		const scrolled = window.scrollY
-		const commentsCount = comments.children.length
 		if (entries[0].isIntersecting && scrolled < initScrollPosition) {
-			if (commentsCount >= 50) {
+			if (topLine > 0) {
 				topLine -= portionSize
 				prependComments(comments, [...post.comments].splice(topLine, portionSize))
 				deleteLastPortion(comments, portionSize)
