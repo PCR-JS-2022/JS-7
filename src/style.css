@@ -1,0 +1,118 @@
+body {
+    margin: 0px;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+}
+
+header, footer {
+    height: 35px;
+    background-color: #EFEFEF;
+    flex: 0 0 auto;
+}
+
+main {
+    background-color:#fff;
+    width: 100%;
+    display: inline-flex;
+    flex: 1 0 auto;
+}
+
+figure {
+    width:30%;
+    margin:0px; 
+}
+
+.postTags {
+    width: 100%;
+    max-width: 380px;
+    margin: auto;
+    flex-wrap: wrap;
+    display: flex;
+    gap:10px;
+}
+
+.postImg {
+    height: 240px;
+    width: 100%;
+    max-width:320px;
+    display: block;
+    align-content: center;
+    margin: 1em auto;
+}
+
+.postTags > a {
+    background-color: #E9E3E3;
+    padding: 0.5em 1.5em;
+    margin: 0.5em 0;
+    text-align: center;
+}
+section {
+    width: 80%;
+    padding: 1em;
+}
+
+.PostInfo {
+    min-height: 220px;
+}
+
+.PostInfo > h2 {
+    margin: 0;
+}
+.PostStatistics {
+    display: flex;
+    gap: 20px;
+}
+.likeCount, .commentCount {
+    margin: 0;
+}
+.Icon {
+    width: 1.5em;
+}
+
+.createCommentBtn {
+    margin-left: auto;
+    background-color: #fff;
+    border: 2px solid #E2E2E2;
+}
+.createCommentBtn:hover {
+    background-color:#E2E2E2;
+}
+.comments {
+    margin-top: 0.5em;
+    border-top: 1px solid #E2E2E2;
+    border-bottom: 1px solid #E2E2E2;
+}
+
+.profilePic {
+    width: 60px;
+    height: 60px;
+    margin: 20px;
+    border-radius: 50%;
+}
+.commentPlace {
+    border-top: 1px solid #E2E2E2;
+    border-bottom: 1px solid #E2E2E2;
+    display: flex;
+}
+.commentInfo > * {
+    margin: 0.5em 0;
+}
+
+.subcomment {
+    display: block;
+}
+
+.subcomment > .comment {
+    width: 80%;
+    margin-left: auto;
+}
+.subcomment > .comment:nth-child(2n+1) {
+    background-color: #EFEFEF;
+}
+.greyBox{
+    background-color: #EFEFEF;
+}
+.hidden {
+    display: none;
+}

@@ -1,0 +1,68 @@
+main{
+    flex-direction: column;
+}
+figure,section{
+    width:100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.postTags {
+    order: -1;
+    width: 90%;
+    max-width: 700px;
+    margin: auto;
+    margin-top: 60px;
+    flex-wrap: wrap;
+    display: flex;
+    gap:10px;
+}
+
+.postImg {
+    width: 90%;
+    height: auto;
+    max-width:500px;
+    display: block;
+    align-content: center;
+    margin: 1em auto;
+}
+
+section > div{
+    margin: 0 5%;
+}
+
+.PostInfo > h2 {
+    position: absolute;
+    top: 50px; 
+    left: 5%;
+}
+
+.PostInfo {
+    min-height: 0;
+}
+
+@media (max-width: 440px) {
+    .PostStatistics {
+        height: 80px;
+        position: relative;
+    }
+    .Icon {
+        width: 1.5em;
+        height: 1.5em;
+    }
+    .createCommentBtn {
+        width: 100%;
+        margin-left: auto;
+        height: 3em;
+        position: absolute ;
+        top: 40px; 
+    }
+    .postTags > a {
+        background-color: #E9E3E3;
+        padding: 0.4em 1em;
+        margin: 0.em 0;
+        text-align: center;
+    }
+}
+
