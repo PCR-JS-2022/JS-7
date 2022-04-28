@@ -157,17 +157,25 @@ const prependComments = (commentsBlock, comments) => {
 	}
 }
 const deleteFirstPortion = (commentsBlock, portionSize) => {
+	let scrollHeight = 0
 	for (let i = 0; i < portionSize; i++) {
 		const firstChild = commentsBlock.firstChild
+		scrollHeight += firstChild.offsetHeight
 		commentsBlock.removeChild(firstChild)
 	}
+	const scroll = window.scrollY
+	window.scroll(0, scroll - scrollHeight / 6)
 }
 
 const deleteLastPortion = (commentsBlock, portionSize) => {
+	let scrollHeight = 0
 	for (let i = 0; i < portionSize; i++) {
 		const lastChild = commentsBlock.lastChild
+		scrollHeight += lastChild.offsetHeight
 		commentsBlock.removeChild(lastChild)
 	}
+	const scroll = window.scrollY
+	window.scroll(0, scroll + scrollHeight)
 }
 
 const comments = q('.comments')
@@ -177,39 +185,53 @@ let topLine = 0
 let bottomLine = 10
 appendComments(comments, [...post.comments].splice(topLine, portionSize))
 
-function updateComments() {
-	const scrolled = window.scrollY
-	const childrenCount = comments.children.length
+window.onload = () => {
 	const lastComment = comments.lastChild
-	const firstComment = comments.firstChild
-	const firstCommentCoords = firstComment.getBoundingClientRect()
-	const lastCommentCoords = lastComment.getBoundingClientRect()
-	const windowHeight = document.documentElement.clientHeight
+	const options = {root: null, rootMargin: '0px', threshold: 0.5}
 
-	log(windowHeight)
-
-	const isLastCommentTopVisible = lastCommentCoords.top > 0 && lastCommentCoords.top < windowHeight
-	const isFirstCommentBottomVisible = firstCommentCoords.bottom > 0 && firstCommentCoords.bottom < windowHeight
-
-	if (isLastCommentTopVisible && scrolled > initScrollPosition) {
-		if (childrenCount >= 50) {
-			topLine += portionSize
-			deleteFirstPortion(comments, portionSize)
+	const bottomCallback = function (entries, observer) {
+		const scrolled = window.scrollY
+		const commentsCount = comments.children.length
+		if (entries[0].isIntersecting && scrolled > initScrollPosition) {
+			if (commentsCount >= 50) {
+				deleteFirstPortion(comments, portionSize)
+				topLine += portionSize
+				const firstComment = comments.firstChild
+				const topObserver = new IntersectionObserver(topCallback, options)
+				topObserver.observe(firstComment)
+			}
+			appendComments(comments, [...post.comments].splice(bottomLine, portionSize))
+			bottomLine += portionSize
+			observer.unobserve(entries[0].target)
+			const newLastComment = comments.lastChild
+			observer.observe(newLastComment)
 		}
-		appendComments(comments, [...post.comments].splice(bottomLine, portionSize))
-		bottomLine += portionSize
+
+		initScrollPosition = scrolled
 	}
 
-	if (isFirstCommentBottomVisible && scrolled < initScrollPosition) {
-		if (topLine > 0) {
-			bottomLine -= portionSize
-			deleteLastPortion(comments, portionSize)
-			topLine -= portionSize
-			prependComments(comments, [...post.comments].splice(topLine, portionSize))
-		}
-	}
+	const bottomObserver = new IntersectionObserver(bottomCallback, options)
+	bottomObserver.observe(lastComment)
 
-	initScrollPosition = scrolled
+	function topCallback(entries, observer) {
+		const scrolled = window.scrollY
+		const commentsCount = comments.children.length
+		if (entries[0].isIntersecting && scrolled < initScrollPosition) {
+			if (commentsCount >= 50) {
+				topLine -= portionSize
+				prependComments(comments, [...post.comments].splice(topLine, portionSize))
+				deleteLastPortion(comments, portionSize)
+				bottomObserver.observe(comments.lastChild)
+				bottomLine -= portionSize
+				observer.unobserve(entries[0].target)
+				if (bottomLine > 50) {
+					const newFirstComment = comments.firstChild
+					observer.observe(newFirstComment)
+				}
+			}
+		}
+
+		initScrollPosition = scrolled
+	}
 }
 
-window.addEventListener("scroll", updateComments)
