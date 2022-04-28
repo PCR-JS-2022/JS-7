@@ -2,7 +2,7 @@ const random3 = () => Math.floor(Math.random() * (4 - 1)) + 1;
 const randomDate = () =>
   new Date(
     new Date("04-09-1999").getTime() +
-      Math.random() * (new Date().getTime() - new Date("04-09-1999").getTime())
+    Math.random() * (new Date().getTime() - new Date("04-09-1999").getTime())
   );
 const generateComment = (id) => ({
   id,
@@ -36,3 +36,105 @@ const post = {
     return comment;
   }),
 };
+
+document.querySelector('.title').innerText = post.title;
+document.querySelector('.postImg').src = post.pathToPostImg;
+document.querySelector('.date').innerText = post.date.toLocaleDateString();
+document.querySelector('.description_text').innerText = post.description;
+document.querySelector('.likeCount').innerText = post.likes;
+let tags = document.querySelector('.tags');
+for (let el of post.tags) {
+  let tag = document.createElement('span');
+  tag.innerText = el;
+  tags.append(tag);
+};
+
+function addComment(newComment) {
+  const comment = document.createElement('div');
+  comment.className = "comment";
+
+  const userPic = document.createElement('img');
+  profilePic.className = "userPic";
+  profilePic.src = newComment.pathToUserImg;
+  comment.appendChild(userPic);
+
+  const userName = document.createElement('span');
+  profileName.className = "userName";
+  profileName.innerText = newComment.userName;
+  comment.appendChild(userName);
+
+  const commentDate = document.createElement('span');
+  commentTime.className = "commentDate";
+  commentTime.innerText = newComment.date.toLocaleDateString();
+  comment.appendChild(commentDate);
+
+  var br = document.createElement('br');
+  comment.appendChild(br);
+
+  const commentText = document.createElement('p');
+  commentText.className = "commentText";
+  commentText.innerText = newComment.description;
+  comment.appendChild(commentText);
+
+  if (newComment.children) {
+    const subcomment = document.createElement('div');
+    subcomment.className = "subcomment";
+    comment.appendChild(subcomment);
+    for (let el of newComment.children) {
+      subcomment.appendChild(addComment(el))
+    };
+  }
+  return comment;
+}
+
+
+let commentCount = 0;
+showBottomComments(0, post);
+let startIndex = 5;
+
+function showBottomComments(startIndex, post) {
+  let lastIndex = startIndex + 5;
+  if (lastIndex > post.comments.length) {
+    lastIndex = post.comments.length;
+  };
+
+  for (let i = startIndex; i < lastIndex; i++) {
+    document.querySelector('.comments').appendChild(addComment(post.comments[i]));
+    commentCount++;
+  }
+}
+
+function showTopComments(startIndex, post) {
+  if (startIndex < 55) {
+    startIndex = 55;
+  }
+
+  for (let i = startIndex - 51; i > startIndex - 56; i--) {
+    document.querySelector('.comments').prepend(addComment(post.comments[i]));
+    commentCount++;
+  }
+}
+
+window.addEventListener('scroll', () => {
+  if (document.body.scrollHeight - document.body.scrollTop === document.body.clientHeight) {
+    while (commentCount > 50) {
+      document.querySelector('.comments').removeChild(document.querySelector('.comments').firstChild);
+      commentCount--;
+    }
+    if (startIndex < post.comments.length - 5) {
+      showBottomComments(startIndex, post);
+      startIndex += 5;
+    }
+  }
+
+  if (document.body.scrollTop === 0 && commentCount >= 50) {
+    while (commentCount > 50) {
+      document.querySelector('.comments').removeChild(document.querySelector('.comments').lastChild);
+      commentCount--;
+    }
+    if (startIndex > 50) {
+      showTopComments(startIndex, post);
+      startIndex -= 5;
+    }
+  }
+})

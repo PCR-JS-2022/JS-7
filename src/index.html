@@ -1,13 +1,76 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./index.js"></script>
-    <title>Document</title>
-  </head>
-  <body>
-    <img src="" alt="" />
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="./index.js"></script>
+  <title>Коллекция фотографий</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1 class="title"></h1>
+  </header>
+  <main>
+    <section class="image-block">
+      <img class="postImg" src="" alt="кот">
+      <div class="tags">
+      </div>
+    </section>
+
+    <section class="additional-block">
+      <div class="description">
+        <div>
+          <p class="date"></p>
+          <p class="description_place"></p>
+          <p class="description_text"></p>
+        </div>
+        <div class="buttons">
+          <button id="likeButton">
+            <img src="../public/img/likes.png" alt="like button">
+            <span class="likeCount"></span>
+          </button>
+          <button>
+            <img src="../public/img/comments.png" alt="comment button">
+            <span class="commentCount"></span>
+          </button>
+          <button id="addCommentButton">Добавить комментарий</button>
+        </div>
+      </div>
+
+      <div class="comments">
+        <div class="comment">
+          <img class="userPic" src="../public/img/user1.png" alt="аватар">
+          <span class="userName"><span>
+              <span class="commentDate">DD-MM-YYYY</span><br><br>
+              <p class="commentText">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, at dolore hic
+                impedit
+                laborum perferendis quasi voluptate! A, aperiam deleniti ducimus esse excepturi
+                explicabo magni
+                nemo nobis perspiciatis porro sunt.
+              </p>
+        </div>
+        <div class="subcomment">
+          <img src="../public/img/user1.png" alt="аватар">
+          <span>Ноунейм <span><span>DD-MM-YYYY</span><br><br>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, at dolore hic
+                impedit
+                laborum perferendis quasi voluptate! A, aperiam deleniti ducimus esse excepturi
+                explicabo magni
+                nemo nobis perspiciatis porro sunt.</p>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer></footer>
+
+  <script src="./index.js"></script>
+</body>
+
 </html>
