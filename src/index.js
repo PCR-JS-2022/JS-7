@@ -191,9 +191,8 @@ window.onload = () => {
 
 	const bottomCallback = function (entries, observer) {
 		const scrolled = window.scrollY
-		const commentsCount = comments.children.length
 		if (entries[0].isIntersecting && scrolled > initScrollPosition) {
-			if (commentsCount >= 50) {
+			if (topLine > 0) {
 				deleteFirstPortion(comments, portionSize)
 				topLine += portionSize
 				const firstComment = comments.firstChild
