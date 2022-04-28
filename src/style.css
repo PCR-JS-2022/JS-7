@@ -1,0 +1,184 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    margin: 0;
+    padding-top: 10px;
+}
+
+header,
+footer {
+    background: #0088BB;
+    height: 70px;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    margin-top: 50px;
+}
+
+.card_img {
+    width: 320px;
+    height: 240px;
+}
+
+.card {
+    margin-left: 50px;
+}
+
+.information_title {
+    margin: 0;
+    padding: 0;
+}
+
+.tags {
+    display: flex;
+    width: 320px;
+    flex-wrap: wrap;
+}
+
+.tags > p {
+    background-color: grey;
+    text-align: center;
+    margin: 10px;
+    padding: 3px;
+}
+
+section {
+    margin-left: 50px;
+    padding-right: 20px;
+}
+
+.information_title {
+    margin-bottom: 40px;
+}
+
+.love-icon, .comment-icon {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}
+
+.information_statistics {
+    display: flex;
+    margin-top: 50px;
+}
+
+.love, .count-comment, .addComment {
+    display: flex;
+    align-items: center;
+}
+
+.count-comment {
+    margin-left: 50px;
+}
+
+.addComment {
+    margin-left: auto;
+}
+
+.comment {
+    margin-top: 70px;
+    display: flex;
+}
+
+.comment_img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.comment {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.comment>div {
+    margin-left: 20px;
+}
+
+.comment_text p {
+    margin: 3px;
+}
+
+li ul {
+    margin-left: 100px;
+}
+
+li>ul>li>.comment {
+    padding: 10px;
+}
+
+li>ul>li:nth-child(2n+1) {
+    background: rgba(196, 196, 196, 0.2);
+}
+
+li {
+    list-style-type: none;
+}
+
+ul:first-child {
+    padding: 0;
+}
+
+.love-icon:active {
+    width: 18px;
+    height: 18px;
+}
+
+@media screen and (max-width: 850px) {
+    main {
+        flex-wrap: wrap;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0;
+        margin-bottom: 30px;
+    }
+
+    .tags {
+        order: -1;
+        margin-bottom: 30px;
+    }
+
+    .tags,
+    .card_img {
+        padding: 0 20px 0 20px;
+        width: calc(100vw - 40px);
+    }
+
+    section {
+        padding: 0;
+        margin: 0;
+    }
+
+    section>div {
+        padding: 0 20px 0 20px;
+    }
+
+    li>ul {
+        margin-left: 40px;
+    }
+
+
+}
+
+@media screen and (max-width: 360px) {
+    li>ul {
+        margin-left: 0px;
+    }
+
+    .comment_text {
+        margin-left: 20px;
+    }
+
+    .count-comment, .addComment {
+        margin-left: 30px;
+    }
+}
