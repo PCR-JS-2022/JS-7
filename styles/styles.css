@@ -102,6 +102,15 @@ header {
     border-bottom: var(--border-grey);
 }
 
+.photo-layout .content-block .comments .comment-block .comment .author {
+    font-weight: bold;
+}
+
+.photo-layout .content-block .comments .comment-block .comment .dateTime {
+    color: grey;
+    font-style: italic;
+}
+
 .photo-layout .content-block .comments .comment-block .comment .avatar {
     margin-right: 10px;
 }
@@ -112,6 +121,7 @@ header {
     border-top: none;
     display: none;
 }
+
 .photo-layout .content-block .has-inner-comments {
     border: 2px solid blueviolet;
     cursor: pointer;

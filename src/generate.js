@@ -91,7 +91,7 @@ const toOpenComments = () => {
             const commentsAnswer = commentNode.getElementsByClassName('comment-answer');
             Array.prototype.forEach.call(commentsAnswer, (com) => {
                 if (getComputedStyle(com).display === 'none') {
-                    com.style.display = 'block';
+                    com.style.display = 'flex';
                 } else {
                     com.style.display = 'none';
                 }
