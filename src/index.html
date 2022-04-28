@@ -1,13 +1,94 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./index.js"></script>
-    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="index.js"></script>
+    <title>Keshin blog</title>
   </head>
   <body>
-    <img src="" alt="" />
+    <header></header>
+    <main>
+      <div class="wrapper">
+        <div class="photo-block">
+          <h1 class="photo-title"></h1>
+          <img class="photo-main" src="" alt="cat" />
+          <div class="tags-block"></div>
+        </div>
+        <div class="photo-content">
+          <div class="photo-description">
+            <span class="photo-date"></span>
+            <span class="photo-descr"></span>
+          </div>
+          <div class="buttons-block">
+            <button class ="like-btn">
+              <img src="../public/img/likes.png" alt="like" />
+            </button>
+            <span class="likes-count"></span>
+            <button id="comment-btn">
+              <img src="../public/img/comments.png" alt="comment" />
+            </button>
+            <span class="comments-count">7</span>
+            <a href="#popup" class="likes" id="likes">Лайки</a>
+            <button class="comment-btn">Добавить комментарий</button>
+          </div>
+          <div class="comments-block">
+            <ul class="main-comments"></ul>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+    <div id="popup" class="popup">
+      <div class="popup-body">
+        <div class="popup-content">
+          <a href="#likes" class="popup-close">X</a>
+          <div class="persons">
+            <div class="person">
+              <img src="src/photos/13.jpg" alt="avatar">
+              <span class="name">Name</span>
+            </div>
+            <div class="person">
+              <img src="src/photos/13.jpg" alt="avatar">
+              <span class="name">Name</span>
+            </div>
+            <div class="person">
+              <img src="src/photos/13.jpg" alt="avatar">
+              <span class="name">Name</span>
+            </div>
+            <div class="person">
+              <img src="src/photos/13.jpg" alt="avatar">
+              <span class="name">Name</span>
+            </div>
+            <div class="person">
+              <img src="src/photos/13.jpg" alt="avatar">
+              <span class="name">Name</span>
+            </div>
+            <div class="person">
+              <img src="src/photos/13.jpg" alt="avatar">
+              <span class="name">Name</span>
+            </div>
+            <div class="person">
+              <img src="src/photos/13.jpg" alt="avatar">
+              <span class="name">Name</span>
+            </div>
+            <div class="person">
+              <img src="src/photos/13.jpg" alt="avatar">
+              <span class="name">Name</span>
+            </div>
+            <div class="person">
+              <img src="src/photos/13.jpg" alt="avatar">
+              <span class="name">Name</span>
+            </div>
+            <div class="person">
+              <img src="src/photos/13.jpg" alt="avatar">
+              <span class="name">Name</span>
+            </div>
+          </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>

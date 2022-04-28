@@ -1,0 +1,272 @@
+:root {
+    --primary-background-color: rgba(196, 196, 196, 0.5);
+    --primary-border-color: #C4C4C4;
+    --primary-hover-color: rgb(141, 141, 141);
+    --primary-btns-color: #000;
+    --popup-background-color: rgba(0, 0, 0, 0.7);
+    --popup-content-bacground-color: #fff;
+}
+
+* {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    height: 40px;
+}
+
+header {
+    border-bottom: 1px solid var(--primary-border-color);
+}
+
+footer {
+    border-top: 1px solid var(--primary-border-color);
+}
+
+.wrapper {
+    padding: 24px 45px 0px 45px;
+    margin: 0;
+    display: flex;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.photo-block {
+    width: 320px;
+    margin-right: 100px;
+}
+
+.photo-content {
+    width: 100%;
+}
+
+.photo-block img {
+    width: 320px;
+    height: 240px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+.tags-block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.tags-block  a {
+    display: block;
+    background-color: var(--primary-background-color);
+    border-radius: 20px;
+    margin-bottom: 10px;
+    padding: 7px;
+    text-decoration: none;
+}
+
+.photo-description {
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-description span {
+    margin-bottom: 10px;
+}
+
+.photo-description h1 {
+    margin-bottom: 50px;
+}
+
+.photo-description span:last-child {
+    margin-bottom: 50px;
+}
+
+.buttons-block {
+    margin-bottom: 10px;
+}
+
+.buttons-block span {
+    margin-right: 15px;
+}
+
+.buttons-block button {
+    outline: none;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.buttons-block button:last-child {
+    margin-bottom: 3px;
+}
+
+.comments-block {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--primary-border-color);
+}
+
+.comments-block ul {
+    list-style: none;
+}
+
+.comment img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.comment {
+    display: flex;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+.comment-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.comment-info span {
+    margin-bottom: 5px;
+}
+
+.subcomments {
+    margin-left: 20%;
+}
+
+.subcomments li:nth-child(odd) .comment {
+    background-color: var(--primary-background-color);
+}
+
+.likes {
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--primary-btns-color);
+}
+
+.likes:hover {
+    color: var(--primary-hover-color);
+}
+
+.comment-btn {
+    font-size: 14px;
+    float: right;
+}
+
+.comment-btn:hover {
+    color: var(--primary-hover-color);
+}
+
+.popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: var(--popup-background-color);
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.popup:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-body {
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-content {
+    position: relative;
+    background-color: var(--popup-content-bacground-color);
+    color: var(--primary-btns-color);
+    width: 1000px;
+    min-height: 300px;
+    max-height: calc(100vh - 72px);
+    overflow-y: auto;
+}
+
+.popup-close {
+    position: absolute;
+    text-decoration: none;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    color: var(--primary-btns-color);
+}
+
+.persons {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 30px;
+}
+
+.person img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.person {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 15px;
+}
+
+.person .name {
+    text-align: center;
+    margin-top: 6px;
+}
+
+.with-subcomments {
+    background-color: aqua;
+}
+
+@media screen and (max-width: 412px) {
+    .wrapper {
+        flex-direction: column;
+    }
+    .photo-block {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    h1 {
+        order: 1;
+    }
+    .comments-block {
+        display: inline-flex;
+    }
+    .comment {
+        display: inline-flex;
+    }
+    .photo-description {
+        width: 100%;
+    }
+    .buttons-block {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .wrapper {
+        padding: 10px;
+    }
+    .comments-block {
+        font-size: 14px;
+    }
+    .comment {
+        width: auto;
+    }
+}
