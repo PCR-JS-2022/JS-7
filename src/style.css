@@ -1,0 +1,129 @@
+body {
+    margin: 0px;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+}
+    
+header, footer {
+    text-align: center;
+    height: 35px;
+    background-color: #EFEFEF;
+    flex: 0 0 auto;
+}
+    
+main {
+    background-color:#fff;
+    width: 100%;
+    display: inline-flex;
+    flex: 1 0 auto;
+}
+
+html {
+    height: 100%;
+}
+
+.leftPart {
+    width: 30%;
+}
+
+.tags {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.mainImg {
+    width: 320px;
+    height: 240px;
+    display: block;
+    margin: 1em auto;
+    max-width: 100%;
+}
+
+section {
+    width: 70%;
+    padding: 1.5em;
+}
+
+a {
+    display: inline-flex;
+    padding: 1.5em;
+    margin: 0.5em;
+    font: 18px arial;
+    background-color: #E9E3E3;
+    float:left;
+}
+
+
+
+.buttonContainer {
+    display: flex;
+    gap: 10px;
+}
+
+.buttonContainer > img{
+    width: 20px;
+    height: 20px;
+}
+
+.commentBtn{
+    margin-left: auto;
+}
+
+.avatar {
+  border-radius: 100%;
+  width: 45px; 
+  height: 45px; 
+  margin: 0.5em;
+}
+
+
+
+.container {
+    display: inline-flex;
+    border-top: 1px solid #E2E2E2;
+    border-bottom: 1px solid #E2E2E2;
+}
+.commentContent > * {
+    margin: 0;
+}
+
+
+
+.subCommentContainer > div > div {
+    margin-left: 30%;
+}
+
+.subCommentContainer > div > div:nth-child(2n+1){
+      background-color: rgba(196, 196, 196, 0.2);
+    }
+@media (max-width: 798px){
+      main {
+          flex-direction: column;
+      }
+
+      .leftPart {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+      }
+
+      .tags {
+          order: -1;
+      }
+
+      section {
+          width: 90%;
+          margin: 5%;
+          padding: 0%;
+      }
+  }
+
+  .invisible {
+      display: none;
+  }
+
+ .hasInvis {
+     background-color:rgba(196, 196, 196, 0.5) ;
+ }
