@@ -1,0 +1,169 @@
+* {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+header,
+footer {
+    height: 50px;
+    background-color: #0088BB;
+}
+
+header>h1 {
+    margin-top: 0;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.title,
+.date {
+    margin-bottom: 20px;
+}
+
+
+main {
+    display: flex;
+    padding: 35px;
+}
+
+.photo-tag-block {
+    width: 340px;
+}
+
+.photo {
+    width: 320px;
+    height: 240px;
+    text-align: center;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
+}
+
+.tags>span {
+    background-color: rgb(202, 197, 197);
+    margin: 10px;
+    padding: 3px;
+}
+
+main>div {
+    width: 100%;
+    margin-left: 15px;
+}
+
+.main-info {
+    padding-left: 30px;
+}
+
+.functional-bar {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment-count,
+.like-count {
+    margin: 0 40px 0 10px;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+.comment-button {
+    margin-left: auto;
+    margin: 0 0 20px auto;
+    cursor: pointer;
+}
+
+button {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: white;
+}
+
+.like-button {
+    height: 20px;
+}
+
+.comments-list {
+    margin: 15px 0;
+    padding: 0 0 15px 15px;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.comments-list ul {
+    list-style-type: none;
+}
+
+.comments-list>ul li>div {
+    display: flex;
+    min-height: 100px;
+}
+
+.comments-list>ul li img {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+}
+
+.sub-comments {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+li {
+    padding: 10px;
+    display: grid;
+    border-top: 1px solid gray;
+}
+
+div>p:nth-child(3) {
+    margin-top: 15px;
+    padding-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+
+    html,
+    body {
+        overflow-x: hidden;
+    }
+
+    main {
+        display: block;
+    }
+
+    .main-info {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .photo-tag-block {
+        display: block;
+    }
+
+    .title {
+        margin-top: 20px;
+    }
+
+    .photo,
+    .tags {
+        height: auto;
+    }
+
+    .tags>span {
+        margin-left: 0;
+    }
+
+    .comments {
+        padding-left: 0;
+    }
+}

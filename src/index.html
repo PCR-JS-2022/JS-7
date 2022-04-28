@@ -1,13 +1,47 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
+<head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./index.js"></script>
-    <title>Document</title>
-  </head>
-  <body>
-    <img src="" alt="" />
-  </body>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+    <title>Галерея</title>
+</head>
+
+<body>
+    <header>
+        <h1>Галерея v3.0</h1>
+    </header>
+    <main>
+        <section class="photo-tag-block">
+            <img class="photo" alt="Котик">
+            <div class="tags">
+            </div>
+        </section>
+        <div class='main-info'>
+            <section class="info">
+                <h1 class="title"></h1>
+                <p class="date"></p>
+                <p class="description"></p>
+            </section>
+            <section class="functional-bar">
+                <button class="like-button"><img class="icon" src="../public/img/likes.png"></button>
+                <p class="like-count"></p>
+                <img class="icon" src="../public/img/comments.png">
+                <p class="comment-count"></p>
+                <button class="comment-button">
+                    Добавить комментарий
+                </button>
+            </section>
+            <section class="comments-list">
+                <ul class="comments">
+                </ul>
+            </section>
+        </div>
+    </main>
+    <footer>
+    </footer>
+    <script src="index.js"></script>
+</body>
+
 </html>
