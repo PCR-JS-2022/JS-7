@@ -73,7 +73,7 @@ let count = 0;
 post.comments.forEach(comment => {
     count++;
     let li = create_comment(comments, comment);
-    if (count > 10) {
+    if (count > 5) {
         li.style.display = "none";
     }
 
@@ -103,18 +103,11 @@ function create_comment(comments, comment) {
 
     let commInfo = document.createElement("div");
     div.appendChild(commInfo);
-
-    let name = document.createElement("p");
-    name.appendChild(document.createTextNode(comment.userName));
-    commInfo.appendChild(name);
-
-    let date = document.createElement("p");
-    date.appendChild(document.createTextNode(getDate(comment.date)));
-    commInfo.appendChild(date);
-
-    let description = document.createElement("p");
-    description.appendChild(document.createTextNode(comment.description));
-    commInfo.appendChild(description);
+    
+    createAndAppend(commInfo, document.createTextNode(comment.userName));
+    createAndAppend(commInfo, document.createTextNode(getDate(comment.date)));
+    createAndAppend(commInfo, document.createTextNode(comment.description));
+    
     return li;
 }
 
@@ -135,10 +128,16 @@ subComments.forEach(comment => {
 
 let commOnPage = 5;
 document.addEventListener("scroll", () => {
-    if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 200) {
+    if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 30) {
         for (let i = commOnPage; i < commOnPage + 5; i++) {
             allComments[i].style.display = "block";
         }
         commOnPage += 5;
     }
 });
+
+function createAndAppend(commInfo, append) {
+    let div = document.createElement("p");
+    div.appendChild(append);
+    commInfo.appendChild(div);
+}
