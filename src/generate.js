@@ -6,12 +6,13 @@ const likeCount = document.querySelector('.like-count');
 const commentCount = document.querySelector('.comment-count');
 const tagsBlock = document.querySelector('.tags');
 const commentsLayout = document.querySelector('.comments');
+let commentsCountOnPage = 0; // счётчик отображенных комментариев на странице
 console.log(post);
 
 /**
  * Get the format date
- * Получить дату в человеко-читаемом формате
- * @param date
+ * Получает дату в человеко-читаемом формате
+ * @param {Date} date - объект даты
  * @param withTime - флаг: нужно ли указывать время
  * @returns {string}
  */
@@ -20,11 +21,11 @@ const getFormatDate = (date, withTime = false) => {
         throw new Error('Передан не объект даты!');
     }
     if (withTime) {
-        const resultDate = (date.getDate() < 10) ? `0${date.getDate()}` : date.getDate();
+        const resultDate = (date.getDate() < 10) ? `0${date.getDate()}` : date.getDate(); // Добавляем ведущий 0, если необходимо;
         const resultMonth = (date.getMonth() + 1 < 10) ? `0${date.getMonth() + 1}` : date.getDate() + 1;
         const resultYear = date.getFullYear();
-        const resultHour = date.getHours();
-        const resultMinutes = date.getMinutes();
+        const resultHour = (date.getHours() < 10) ? `0${date.getHours()}` : date.getHours();
+        const resultMinutes = (date.getMinutes() < 10) ? `0${date.getMinutes()}` : date.getMinutes();
         return `${resultDate}.${resultMonth}.${resultYear} - ${resultHour}:${resultMinutes}`;
     }
     const resultDate = (date.getDate() < 10) ? `0${date.getDate()}` : date.getDate();
@@ -35,7 +36,7 @@ const getFormatDate = (date, withTime = false) => {
 
 /**
  * Get comment node-template
- * Получить шаблон комментария
+ * Получает шаблон комментария - ноду
  * @returns {Node}
  */
 const getCommentNode = () => {
@@ -45,8 +46,7 @@ const getCommentNode = () => {
 
 /**
  * To generate comment
- * Сгенерировать комментарий
- * @param commentNode
+ * Генерирует комментарий
  * @param comment - комментарий
  * @param hasInnerComments - флаг: имеет ли комментарий дочерние комментарии
  * @param commentAnswer - флаг: является ли комментарий - ответом
@@ -68,7 +68,7 @@ const buildComment = (comment, hasInnerComments = false, commentAnswer = false) 
 
 /**
  * Get the total count of comments
- * Получить общее количество комментариев к посту
+ * Получает общее количество комментариев к посту
  * @returns {number}
  */
 const gelAllCommentsCount = () => {
@@ -80,37 +80,12 @@ const gelAllCommentsCount = () => {
 };
 
 /**
- * To generate comments
- * Основной метод для генерации комментариев
+ * To add EventListener for comment
+ * Добавляет слушателя событий на комментарии, которые имеют дочернии комментарии
  */
-const generateComments = () => {
-    const generatedComments = {};
-    for (const comment of post.comments) {
-        generatedComments[comment.id] = [];
-        if (Object.keys(generatedComments).length > 5) {
-            break;
-        }
-        if (comment.hasOwnProperty('children')) {
-            generatedComments[comment.id].push(buildComment(comment, true, false));
-            comment.children.forEach((commentAnswer) => {
-                generatedComments[comment.id].push(buildComment(commentAnswer, false, true));
-            })
-            continue;
-        }
-        generatedComments[comment.id].push(buildComment(comment, false, false));
-    }
-    for (const comment in generatedComments) {
-        const commentBlock = document.createElement('div');
-        commentBlock.classList.add('comment-block');
-        generatedComments[comment].forEach((comm) => {
-            commentBlock.appendChild(comm);
-        })
-        commentsLayout.appendChild(commentBlock);
-    }
-}
-
 const toOpenComments = () => {
     const commentNodes = document.getElementsByClassName('comment-block');
+    console.log(commentNodes);
     Array.prototype.forEach.call(commentNodes, (commentNode) => {
         commentNode.addEventListener('click', () => {
             const commentsAnswer = commentNode.getElementsByClassName('comment-answer');
@@ -124,6 +99,45 @@ const toOpenComments = () => {
         });
     })
 };
+
+/**
+ * To generate comments
+ * Основной метод для генерации комментариев
+ * @param {number} endPosition - конечная позиция (индекс в массиве комментариев)
+ * @param {number} startPosition - начальная позиция (индекс в массиве комментариев)
+ */
+const generateComments = (startPosition, endPosition) => {
+    toOpenComments(); // Добавить обработчик клика для сгенерированных комментариев.
+    let generatedComments = {}; // объект сгенерированных комментариев, где свойство - id основного комментария, а значение свойства массив дочерних комментариев
+    if (endPosition >= post.comments.length) {
+        endPosition = post.comments.length;
+    }
+    for (let i = startPosition; i < endPosition; i++) {
+        commentsCountOnPage++;
+        const comment = post.comments[i];
+        generatedComments[comment.id] = [];
+        if (Object.keys(generatedComments).length > 10) {
+            break;
+        }
+        if (comment.hasOwnProperty('children')) {
+            generatedComments[comment.id].push(buildComment(comment, true, false));
+            comment.children.forEach((commentAnswer) => {
+                generatedComments[comment.id].push(buildComment(commentAnswer, false, true));
+            })
+            continue;
+        }
+        generatedComments[comment.id].push(buildComment(comment, false, false));
+    }
+    for (const comment in generatedComments) {
+        const commentBlock = document.createElement('div'); // создаем обёртку для главного комментария и его дочерних комментариев (если они есть), и формируем полноценный блок
+        commentBlock.classList.add('comment-block');
+        generatedComments[comment].forEach((comm) => {
+            commentBlock.appendChild(comm);
+        })
+        commentsLayout.appendChild(commentBlock);
+    }
+    toOpenComments();
+}
 
 /**
  * Main method for generating document
@@ -140,7 +154,7 @@ const generate = () => {
     date.textContent = getFormatDate(post.date);
     descriptionBlock.append(description);
     descriptionBlock.append(date);
-    likesCountData.innerText = post.likes;
+    likesCountData.textContent = post.likes;
     commentsCountData.textContent = gelAllCommentsCount();
     likeCount.append(likesCountData);
     commentCount.append(commentsCountData);
@@ -151,7 +165,19 @@ const generate = () => {
         p.innerText = tag;
         tagsBlock.append(p);
     });
-    generateComments();
-    toOpenComments();
-}
+    generateComments(0, 10);
+};
+
+
 generate();
+
+/**
+ * Scroll-load comments
+ * Подгружает новые комментарии при скролле страницы
+ */
+document.addEventListener('scroll', () => {
+    let windowRelativeBottom = document.documentElement.getBoundingClientRect().bottom;
+    if (windowRelativeBottom < document.documentElement.clientHeight + 50) {
+        generateComments(commentsCountOnPage, commentsCountOnPage + 10);
+    }
+});
