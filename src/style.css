@@ -1,0 +1,281 @@
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+header {
+    background-color:#0088BB;
+    height: 50px;
+    border-bottom: 1px solid black;
+}
+
+main {
+    height: 100%;
+}
+
+footer {
+    background-color:#0088BB;
+    height: 50px;
+    border-top: 1px solid black;
+    margin-top: 10%;
+}
+
+aside {
+    background-color:white;
+    width: 30%;
+    height: 100%;
+    outline: 1px solid black;
+}
+
+h2 {
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+article {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 100%;
+}
+
+.image {
+    width: 320px;
+    height: 240px;
+    border: 1px solid black;
+}
+
+.article-photo {
+    width: 320px;
+    height: 240px;
+}
+
+section {
+    width: 100%;
+    margin: 35px;
+    height: auto;
+}
+
+.info {
+    height: auto;
+}
+
+.text {
+    height: auto;
+}
+
+p {
+    margin-top: 0;
+}
+
+span {
+    margin: 2% 2% 0 0;
+    padding-left: 4px;
+    padding-right: 4px;
+    background-color: orange;
+    border-radius: 5px;
+}
+
+.tag {
+    width: 320px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.photo-area {
+    margin: 30px 0 0 35px;
+}
+
+.photo-avatar {
+    height: 100%;
+    width: 100%;
+}
+
+button {
+    cursor: pointer;
+    background-color: white;
+    border: 0;
+    margin: 0 2% 0 auto;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+    height: 50%;
+}
+
+.counted {}
+
+.like-counter {
+    margin: 0 15px 0 5px;
+    font-size: 22px;
+}
+
+.like-img {
+    height: 25px;
+    width: 25px;
+}
+
+.comment-img {
+    height: 25px;
+    width: 25px;
+}
+
+.hidden {
+    display: none;
+}
+
+.comment-counter {
+    margin: 0 15px 0 5px;
+    font-size: 22px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul ul {
+    padding: 0 0 0 20%;
+}
+
+ul ul > li:nth-child(odd) > div {
+    background-color: #C4C4C433;
+}
+
+
+.comment {
+    border-top: 1px solid #E2E2E2;
+    border-bottom: 1px solid #E2E2E2;
+    box-sizing: border-box;
+    min-height: 60px;
+    width: 100%;
+    display: flex;
+}
+
+.have-answers {
+    background-color: lightblue;
+    cursor: pointer;
+}
+
+.comments {
+    padding: 0;
+    width: 100%;
+    overflow: auto;
+}
+
+.comment-info {
+    padding: 10px;
+}
+
+li > div > div:first-child {
+    width: 8%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 12px;
+}
+
+li > div > div:first-child + div > p:not(last-child) {
+    margin: 4px 0 0 0;
+    font-size: 11px;
+}
+
+li > div > div:first-child + div > p:last-child {
+    margin: 4px 0 0 0;
+    font-size: 12px;
+}
+
+.avatar {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+.mobile-tag {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    article {
+        display: block;
+    }
+
+    section {
+        width: 100%;
+        margin: 0;
+    }
+
+    .image {
+        width: 100%;
+        height: 320px;
+        border: 1px solid black;
+    }
+
+    .photo-area {
+        margin: 30px;
+    }
+
+    .tag {
+        display: none;
+    }
+
+    .mobile-tag {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 10px 0 10px 0;
+    }
+
+    span {
+        width: 15%;
+        font-size: 4vw;
+    }
+
+    p {
+        font-size: 3.5vw;
+    }
+
+    .info {
+        margin: 30px 30px 0 30px;
+    }
+
+    .text {
+        height: auto;
+    }
+
+    .buttons {
+        height: 10%;
+    }
+
+    button {
+        font-size: 3vw;
+    }
+
+    .comments {
+        margin-top: 10%;
+    }
+
+    img {
+        height: 6vw;
+        width: 6vw;
+    }
+
+    .counter {
+        font-size: 5vw;
+    }
+
+    .article-photo {
+        height: 100%;
+        width: 100%;
+    }
+}

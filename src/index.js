@@ -13,7 +13,7 @@ const generateComment = (id) => ({
   date: randomDate(),
 });
 
-const post = {
+export const post = {
   id: "postID:322",
   pathToPostImg: "../public/img/postImg.png",
   title: "Кот на учебе",

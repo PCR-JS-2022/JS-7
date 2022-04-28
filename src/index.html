@@ -1,13 +1,42 @@
 <!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./index.js"></script>
-    <title>Document</title>
-  </head>
-  <body>
-    <img src="" alt="" />
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Заголовок</title>
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<header><h2>{post.title}</h2></header>
+<main>
+  <article>
+    <div class="photo-area">
+      <div class="mobile-tag"></div>
+      <div class="image">
+        <img class="article-photo" src="" >
+      </div>
+      <div class="tag"></div>
+    </div>
+    <section>
+      <div class="info">
+        <div class="text">
+          <p class="date"></p>
+          <p class="location">Локация съемки : Не указана</p>
+          <p class="description"></p>
+        </div>
+        <div class="buttons">
+          <img class="like-img" src="../public/img/likes.png">
+          <p class="like-counter"></p>
+          <img class="comment-img" src="../public/img/comments.png">
+          <p class="comment-counter"></p>
+          <button>Добавить комментарий</button>
+        </div>
+      </div>
+      <ul class="comments"></ul>
+    </section>
+  </article>
+</main>
+<footer></footer>
+</body>
+<script src="LoadData.js" type="module"></script>
 </html>
