@@ -5,9 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./index.js"></script>
-    <title>Document</title>
+    <title>Что-то 7</title>
+    <link href="style.css" rel="stylesheet">
   </head>
+
   <body>
-    <img src="" alt="" />
+    <header></header>
+
+    <main>
+        <section class="photo-tags-block">
+            <img class="photo-preview" src="/public/img/postImg.png" alt="photo-preview">
+            <div class="tags"></div>
+        </section>
+        <section class="content">
+            <section class="card">
+                <div>
+                    <p class="title"></p>
+                    <p class="date"></p>
+                    <p>Локация: Сочи</p>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim atque laudantium sit molliti</p>
+                </div>
+                <div class="buttons-block">
+                  <div class="buttons">
+                    <button class="likes-button">
+                        <img src="/public/img/likes.png" alt="heart">
+                    </button>
+                    <span class="likes-count">1</span>
+                  </div >
+                  <div class="buttons">
+                    <img class="comment-img" src="/public/img/comments.png" alt="comment">
+                    <span class="comments-count">5</span>
+                  </div>
+                  <div class="add-comment">
+                    <button >Добавить комментарий</button>
+                  </div>
+                </div>
+            </section>
+            <section class="comments-block"></section>
+        </section>
+    </main>
+
+    <footer></footer>
   </body>
 </html>
+
+<script src="logic.js"></script>
