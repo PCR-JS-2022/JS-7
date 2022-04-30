@@ -28,5 +28,5 @@ function addPhotoAndTags() {
 
 addPhotoAndTags();
 
-const comments = new Comments(commentListContainer, 5, 15);
+const comments = new Comments(commentListContainer, 5, 50);
 comments.loadComments(false);

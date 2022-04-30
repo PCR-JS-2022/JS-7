@@ -22,7 +22,7 @@ const post = {
   date: new Date("04-09-1998"),
   tags: Array.from({ length: 10 }, (_, index) => `Tag ${index + 1}`),
   likes: 12,
-  comments: Array.from({ length: 55}, (_, index) => {
+  comments: Array.from({ length: 111}, (_, index) => {
     const comment = generateComment(index.toString());
 
     if (index % 3 === 0) {

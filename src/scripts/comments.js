@@ -1,13 +1,8 @@
 class Comments {
 
     #container;
-    #currentFirstUpperCommentIndex;
-    #currentLastUpperCommentIndex;
-    #currentFirstBottomCommentIndex;
-    #currentLastBottomCommentIndex;
     #commentsToLoad;
     #maxCommentsCount;
-    #lastLoadedCommentIndex;
 
     /**
      * @param {HTMLElement} commentsContainer
@@ -28,21 +23,17 @@ class Comments {
         }
 
         this.#container = commentsContainer;
-        this.#currentFirstUpperCommentIndex = 0;
-        this.#currentLastUpperCommentIndex = commentsLoadCount;
         this.#commentsToLoad = commentsLoadCount;
         this.#maxCommentsCount = maxCommentsCount;
-        this.#currentFirstBottomCommentIndex = -commentsLoadCount;
-        this.#currentLastBottomCommentIndex = 0;
     }
 
     /**
-     * @param {boolean} addToBeggining
+     * @param {boolean} fromBeggining
      * @param {HTMLElement} container
+     * @param {number} index
      * @return {HTMLElement}
      */
-    #appendComment = (comment, container, addToBeggining, subcomment = false) => {
-        //console.log({addToBeggining})
+    #addComment = (comment, container, fromBeggining, index) => {
         const listItem = document.createElement('article');
         listItem.className = 'comment-list__item';
     
@@ -84,7 +75,7 @@ class Comments {
             const subComments = document.createElement('div');
             subComments.className = 'comment-list__item__subcomment-list';
             for (const subComment of comment.children) {
-                this.#appendComment(subComment, subComments, false, true);
+                this.#addComment(subComment, subComments, false, true);
             }
             
             listItem.appendChild(subComments);
@@ -102,49 +93,33 @@ class Comments {
             }
         }
 
-        if (addToBeggining) {
-            //if (!subcomment) console.log('prepending');
-            
+        listItem.setAttribute('index', index);
+
+        if (fromBeggining) {
             container.prepend(listItem);
             return;
         }
-        
-        //if (!subcomment) console.log('appending');
+                
         container.appendChild(listItem);
     }
 
-    #loading;
-    /** 
-     * Подгрузить комментарии
-     */
-    loadComments = (fromStart = true) => {
-        //console.log({start: this.#currentFirstCommentIndex, end: this.#currentLastCommentIndex})
-        fromStart ? this.#prependComments() : this.#appendComments();
+    loadComments = () => {
+        this.#appendComments(0, this.#commentsToLoad);
 
         document.onscroll = (e) => {
-            if (this.#loading) {
-                return;
-            }
-
             const firstComment = this.#container.firstElementChild;
             const lastComment = this.#container.lastElementChild;
             
             const lastIsOnScreen = this.#elementIsOnScreen(lastComment);
             const firstIsOnScreen = this.#elementIsOnScreen(firstComment);
 
-            if (lastIsOnScreen && this.#currentLastUpperCommentIndex !== post.comments.length) {
+            if (lastIsOnScreen) {
                 this.#lastIsOnScreen();
-                //console.log(this.#container.childElementCount);
-                return;
             }
 
-            if (firstIsOnScreen && this.#currentFirstBottomCommentIndex !== 0 && this.#container.childElementCount >= this.#maxCommentsCount) {
-                this.#firstIsOnScreen(lastComment, firstComment);
+            else if (firstIsOnScreen) {
+                this.#firstIsOnScreen();
             }
-
-            console.log(this.#container.childElementCount);
-            //console.log(this.#container.children[0].children[0].children[1].children[0].firstChild.textContent, this.#container.lastChild.children[0].children[1].children[0].firstChild.textContent)
-
         }
     }
 
@@ -162,7 +137,6 @@ class Comments {
      * @param {boolean} fromBeginnig
      */
     #removeComments = (count, fromBeginnig) => {
-        console.log('removing ' + count + ' fromBeginnig = ' + fromBeginnig)
         for (let i = 0; i < count; i++) {
             const index = fromBeginnig ? 0 : this.#container.childElementCount - 1;
             const childToRemove = this.#container.children[index];
@@ -170,90 +144,68 @@ class Comments {
         }
     }
 
-    #appendComments = () => {
-        console.log('appending!');
-        for (let i = this.#currentFirstUpperCommentIndex; i < this.#currentLastUpperCommentIndex; i++) {
-            this.#appendComment(post.comments[i], this.#container, false);
+    #appendComments = (first, end) => {
+        for (let i = first; i < end; i++) {
+            this.#addComment(post.comments[i], this.#container, false, i);
         }
     }
 
-    #prependComments = () => {
-        console.log('prepending!');
-        for (let i = this.#currentLastBottomCommentIndex - 1; i >= this.#currentFirstBottomCommentIndex; i--) {
-            this.#appendComment(post.comments[i], this.#container, true);
+    #prependComments = (end, first) => {
+        for (let i = end - 1; i >= first; i--) {
+            this.#addComment(post.comments[i], this.#container, true, i);
         }
     }
 
 
     #lastIsOnScreen = () => {
-        console.log('last on screen');
-        this.#loading = true;
+        
+        const lastElem = this.#container.lastElementChild;
+        const firstIndex = parseInt(lastElem.getAttribute('index'));
+        if (firstIndex === post.comments.length - 1) {
+            return;
+        }
 
-        this.#currentFirstUpperCommentIndex = this.#currentLastUpperCommentIndex;
-        this.#currentFirstBottomCommentIndex += this.#commentsToLoad;
-        this.#currentLastBottomCommentIndex += this.#commentsToLoad;
+        let lastIndex = firstIndex;
+
         let commentsToRemove = this.#commentsToLoad;
 
-        if (this.#currentLastUpperCommentIndex + this.#commentsToLoad > post.comments.length) {
-            this.#currentLastUpperCommentIndex = post.comments.length;
-            commentsToRemove = post.comments.length - this.#currentLastUpperCommentIndex + 1;
+        if (lastIndex + this.#commentsToLoad > post.comments.length) {
+            commentsToRemove = post.comments.length - lastIndex - 1;
+            lastIndex = post.comments.length - 1;
         }
         else {
-            this.#currentLastUpperCommentIndex += this.#commentsToLoad;
+            lastIndex += this.#commentsToLoad;
         }
                 
         const last = this.#container.lastElementChild;
-        this.loadComments(false);
+        this.#appendComments(firstIndex + 1, lastIndex + 1);
 
         if (this.#container.childElementCount > this.#maxCommentsCount || commentsToRemove < this.#commentsToLoad) {
-            //console.log({commentsToRemove})
             this.#removeComments(commentsToRemove, true);
             
             last.scrollIntoView({block: "end", inline: "nearest"});
         }
-
-        this.#loading = false;
     }
 
-    /**
-     * @param {HTMLElement} lastComment
-     */
-     #firstIsOnScreen = (lastComment, firstComment) => {
-         console.log('first os screen');
-        this.#loading = true;
+     #firstIsOnScreen = () => {
+        const firstElem = this.#container.firstElementChild;
+        const index = parseInt(firstElem.getAttribute('index'));
 
-        if (this.#currentLastUpperCommentIndex + this.#commentsToLoad - this.#maxCommentsCount <= 0) {
-            this.#loading = false;
+        if (index === 0) {
             return;
         }
 
-        this.#currentFirstBottomCommentIndex -= this.#commentsToLoad;
-        this.#currentLastBottomCommentIndex -= this.#commentsToLoad;
-        
-        this.#currentFirstUpperCommentIndex -= this.#commentsToLoad;
-        this.#currentLastUpperCommentIndex -= this.#commentsToLoad;
-
-        if (this.#currentLastUpperCommentIndex === this.#maxCommentsCount) {
-            this.#loading = false;
-            return;
+        const elementToScroll = this.#container.firstElementChild;
+        let lastIndex = index - this.#commentsToLoad;
+        if (index - this.#commentsToLoad < 0) {
+            lastIndex = 0;
         }
-
-        //const shouldLoad = this.#currentLastCommentIndex - this.#maxCommentsCount > 0;
-
-
-        console.log({first: this.#currentFirstBottomCommentIndex, last: this.#currentLastBottomCommentIndex});
-        console.log({firstUpper: this.#currentFirstUpperCommentIndex, lastUpper: this.#currentLastUpperCommentIndex});
-
         
-        const test = this.#container.firstElementChild;
-        this.loadComments(true);
+        this.#prependComments(index, lastIndex);
 
         if (this.#container.childElementCount >= this.#maxCommentsCount) {
             this.#removeComments(this.#commentsToLoad, false);
-            
-            test.scrollIntoView({block: "start", inline: "nearest"});
+            elementToScroll.scrollIntoView({block: "start", inline: "nearest"});
         }
-
-        this.#loading = false;
     }
 }
