@@ -1,0 +1,30 @@
+header > div img {
+    cursor: pointer;
+}
+
+header > div:nth-child(2) {
+    cursor: pointer;
+}
+
+section {
+    margin-top: 50px;
+}
+
+section > header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+section > header > div {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+section > header > div > div {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
