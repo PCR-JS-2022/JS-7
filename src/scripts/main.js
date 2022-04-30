@@ -29,4 +29,4 @@ function addPhotoAndTags() {
 addPhotoAndTags();
 
 const comments = new Comments(commentListContainer, 5, 50);
-comments.loadComments(false);
+comments.loadComments();
