@@ -1,13 +1,41 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./styles.css" />
+        <title>Document</title>
+    </head>
+    <body>
+        <header><div></div></header>
+        <main>
+            <figure class="picture-wrapper">
+                <p class="picture-title"></p>
+                <img class="picture" alt="Фото двух котят" />
+                <figcaption class="tags"></figcaption>
+            </figure>
+            <article class="picture-info">
+                <time class="info_time"></time>
+                <p>Локация съёмки: Израиль</p>
+                <p class="info_description"></p>
+            </article>
+            <div class="actions-and-comments">
+                <section class="actions">
+                    <div class="actions_icons">
+                        <p class="icons_info icons_like">
+                            <span>♥</span><span class="likes_count">12</span>
+                        </p>
+                        <p class="icons_info icons_comments">
+                            <span>✉</span><span class="comments_count">5</span>
+                        </p>
+                    </div>
+                    <p>Добавить комментарий</p>
+                </section>
+                <article class="comments"></article>
+            </div>
+        </main>
+        <footer><div></div></footer>
+    </body>
     <script src="./index.js"></script>
-    <title>Document</title>
-  </head>
-  <body>
-    <img src="" alt="" />
-  </body>
 </html>

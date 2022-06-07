@@ -43,6 +43,7 @@ main {
         "pic info"
         "pic com";
     column-gap: 20px;
+    grid-template-columns: 1fr 4fr;
 }
 
 @media (max-width: 900px) {
@@ -52,6 +53,7 @@ main {
             "info"
             "pic"
             "com";
+        grid-template-columns: 1fr;
     }
 }
 
@@ -109,10 +111,14 @@ main {
     }
 }
 
-//   Основная пикча
-.picture {
-    width: 320px;
-    height: 240px;
+.picture-title {
+    margin-top: 0;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 5px;
 }
 
 // Аватарка юзера
@@ -129,23 +135,30 @@ main {
 }
 
 // Комменты к комментам
-.replica-block {
+.replica {
     margin-left: 150px;
-}
 
-// Чередую через одного
-.replica:nth-child(2n - 1) {
-    background-color: #c4c4c433;
+    &:nth-child(even) {
+        background-color: #c4c4c433;
+    }
 }
 
 // Комментарий
 .comment {
-    width: 100%;
+    width: auto;
     height: auto;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
     display: flex;
     padding: 10px;
+
+    &-with-replica {
+        border: 1px solid #1a94ff;
+
+        &:hover {
+            border: 3px solid #0453ff;
+        }
+    }
 }
 
 // Дата коммента
@@ -164,10 +177,10 @@ main {
     font-weight: bold;
 }
 
-//   Подкомментарий
-.content_subcomment {
-    font-style: italic;
-    font-size: 0.9rem;
-    color: rgba(0, 0, 0, 0.8);
+.content_description {
     margin-bottom: 0;
+}
+
+.hidden {
+    display: none;
 }
