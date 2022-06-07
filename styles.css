@@ -1,0 +1,123 @@
+:root {
+  --header-footer-height: 37px;
+  --border-color: #c4c4c4;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-size: 1.1rem;
+}
+header > div,
+footer > div {
+  position: fixed;
+  width: 100%;
+  background-color: white;
+}
+header,
+footer,
+footer > div,
+header > div {
+  height: var(--header-footer-height);
+}
+footer div {
+  bottom: 0;
+  border-top: 1px solid var(--border-color);
+}
+header div {
+  top: 0;
+  border-bottom: 1px solid var(--border-color);
+}
+main {
+  margin: 37px 50px;
+  display: grid;
+  grid-template-areas: "pic info" "pic com";
+  column-gap: 20px;
+}
+@media (max-width: 900px) {
+  main {
+    margin: 37px;
+    grid-template-areas: "info" "pic" "com";
+  }
+}
+.picture-wrapper {
+  grid-area: pic;
+  margin: 0;
+}
+.picture-info {
+  grid-area: info;
+}
+.actions-and-comments {
+  grid-area: com;
+}
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+.actions > p {
+  line-height: 2.1rem;
+}
+.actions_icons {
+  display: flex;
+  column-gap: 30px;
+}
+.icons_info {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+}
+.icons_like > span:first-child {
+  margin-right: 10px;
+}
+.icons_like > span:first-child:hover {
+  color: red;
+}
+.icons_comments > span:first-child {
+  margin-right: 10px;
+}
+.icons_comments > span:first-child:hover {
+  color: green;
+}
+.picture {
+  width: 320px;
+  height: 240px;
+}
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 100%;
+  margin-right: 10px;
+}
+.comments {
+  font-size: 1rem;
+}
+.replica-block {
+  margin-left: 150px;
+}
+.replica:nth-child(2n - 1) {
+  background-color: #c4c4c433;
+}
+.comment {
+  width: 100%;
+  height: auto;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  padding: 10px;
+}
+.comment_time {
+  margin-left: auto;
+  align-self: flex-end;
+}
+.comment_content > p {
+  margin-top: 0;
+}
+.content_username {
+  font-weight: bold;
+}
+.content_subcomment {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 0;
+}

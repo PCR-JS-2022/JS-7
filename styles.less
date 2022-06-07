@@ -1,0 +1,173 @@
+:root {
+    --header-footer-height: 37px;
+    --border-color: #c4c4c4;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-size: 1.1rem;
+}
+
+header > div,
+footer > div {
+    position: fixed;
+    width: 100%;
+    background-color: white;
+}
+
+header,
+footer,
+footer > div,
+header > div {
+    height: var(--header-footer-height);
+}
+
+footer div {
+    bottom: 0;
+    border-top: 1px solid var(--border-color);
+}
+
+header div {
+    top: 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+// Основная часть
+main {
+    margin: 37px 50px;
+    display: grid;
+    grid-template-areas:
+        "pic info"
+        "pic com";
+    column-gap: 20px;
+}
+
+@media (max-width: 900px) {
+    main {
+        margin: 37px;
+        grid-template-areas:
+            "info"
+            "pic"
+            "com";
+    }
+}
+
+.picture-wrapper {
+    grid-area: pic;
+    margin: 0;
+}
+
+.picture-info {
+    grid-area: info;
+}
+
+.actions-and-comments {
+    grid-area: com;
+}
+
+// Секция с лайками и комментами и кнопкой "добавить..."
+.actions {
+    display: flex;
+    justify-content: space-between;
+
+    //   Текст в секции
+    & > p {
+        line-height: 2.1rem;
+    }
+}
+
+//   Иконки с цифрами
+.actions_icons {
+    display: flex;
+    column-gap: 30px;
+}
+
+// Иконка с цифрой
+.icons_info {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+}
+
+//   Лайк
+.icons_like > span:first-child {
+    margin-right: 10px;
+
+    &:hover {
+        color: red;
+    }
+}
+
+//   Коммент
+.icons_comments > span:first-child {
+    margin-right: 10px;
+
+    &:hover {
+        color: green;
+    }
+}
+
+//   Основная пикча
+.picture {
+    width: 320px;
+    height: 240px;
+}
+
+// Аватарка юзера
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 100%;
+    margin-right: 10px;
+}
+
+// Блок с комментами
+.comments {
+    font-size: 1rem;
+}
+
+// Комменты к комментам
+.replica-block {
+    margin-left: 150px;
+}
+
+// Чередую через одного
+.replica:nth-child(2n - 1) {
+    background-color: #c4c4c433;
+}
+
+// Комментарий
+.comment {
+    width: 100%;
+    height: auto;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    padding: 10px;
+}
+
+// Дата коммента
+.comment_time {
+    margin-left: auto;
+    align-self: flex-end;
+}
+
+//Текст в комментах
+.comment_content > p {
+    margin-top: 0;
+}
+
+//   Имя юзера
+.content_username {
+    font-weight: bold;
+}
+
+//   Подкомментарий
+.content_subcomment {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+}
